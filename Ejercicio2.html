@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio2</title>
+</head>
+<body>
+    <script>
+            let letras = new Array();
+
+            /*Crea un array vacío llamado letras. Inserta al principio del array las 
+            letras A, B y C. Luego, inserta al final las letras D y E. Finalmente, 
+            elimina el primer elemento y el último, e imprime el array final.*/
+
+            letras.unshift('A', 'B', 'C');
+            letras.push('D', 'E');
+
+            delete letras[0];
+            delete letras[(letras.length -1)];
+
+            for (let index in letras) {
+                console.log(letras[index]);
+            }
+            console.log(letras.toString());
+            console.log(letras.join(' , '));
+
+
+    </script>
+</body>
+</html>
