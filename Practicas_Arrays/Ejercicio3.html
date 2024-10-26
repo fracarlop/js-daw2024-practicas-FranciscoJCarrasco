@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3</title>
+</head>
+<body>
+    <script>
+
+        // 1. Creamos el array de objetos
+        let data = [
+            {name: "Nacho", telephone: "966112233", age: 40},
+            {name: "Ana", telephone: "911223344", age: 35},
+            {name: "Mario", telephone: "611998877", age: 15},
+            {name: "Laura", telephone: "633663366", age: 17}
+        ];
+        console.log("1. Creamos el array: ");
+        data.forEach(function (persona) {
+            console.log("name: " + persona.name + " telephone: "+persona.telephone+" age: "+persona.age)
+        });
+
+
+        // a. Añadimos dos elementos al final
+        data.push({name: "Pedro", telephone: "611944444", age: 25},
+            {name: "Julia", telephone: "633232323", age: 37}
+        );
+        console.log("a. Añadimos dos elementos al final más: ");
+        data.forEach(function (persona) {
+            console.log("name: " + persona.name + " telephone: "+persona.telephone+" age: "+persona.age)
+        });
+
+        // b.sComprobamos con console.log() que se han añadido
+        console.log(data);
+
+        // c. Ordenamos el vector por edad de menor a mayor e imprimimos
+        console.log("b. Ordenamos el array por edad:");
+        data.sort((persona1,persona2) => persona1.age - persona2.age);
+        
+        data.forEach(function (persona) {
+            console.log("name: " + persona.name + " telephone: "+persona.telephone+" age: "+persona.age)
+        });
+
+        // d. Ordenamos el array por nombre e imprimimos
+        console.log("c. Ordenamos el array por nombre:");
+        let ordenado = data.sort((persona1, persona2) => (persona1.name < persona2.name) ? -1 : ((persona1.name > persona2.name) ? 1 : 0));
+           
+        data.forEach(function (persona) {
+            console.log("name: " + persona.name + " telephone: "+persona.telephone+" age: "+persona.age)
+        });
+
+
+        // e. Creamos y mostramos un nuevo vector que contiene sólo los mayores de 30 años
+        console.log("6. Creamos un nuevo array con los mayores de 30 años:");
+        let mayores30 = data.filter(function (persona) {
+            // filtramos
+            return persona.age > 30
+        });
+        
+        mayores30.forEach(function (persona) {
+            console.log("name: " + persona.name + " telephone: "+persona.telephone+" age: "+persona.age)
+        });
+
+    </script>
+</body>
+</html>
