@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio1</title>
+</head>
+<body>
+    
+    <script>
+
+        let paises = ['España', 'Francia', 'Alemania', 'Italia'];
+
+        for (let pais of paises) {
+            console.log(pais);
+        }
+
+        // Se elimina el primer país
+        delete paises[0];
+
+        for (let index in paises) {
+            console.log(paises[index]);
+        }
+    </script>
+
+</body>
+</html>
