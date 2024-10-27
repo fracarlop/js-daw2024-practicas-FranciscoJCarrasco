@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+    <script>
+        /*Se desea validar hasta qué punto la función Math.random es realmente aleatoria. 
+        Para tal fin, calcularemos 10.000 veces números aleatorios del 1 al 10. 
+        Por consola mostraremos cada número del 1 al 10 y a continuación el número de veces que ha salido ese número. 
+        Por ejemplo:
+        Frecuencias
+        Número 1: 1016
+        Número 2: 1019
+        Número 3: 1059
+        ....
+        Número 10: 993*/    
+
+        function getRandom(min, max) {
+             return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        let numeros = new Map([[1,0],[2,0],[3,0],[4,0],[5,0],[6,0],[7,0],[8,0],[9,0],[10,0]]);// clave el número, valor número de repeticiones
+
+
+        for (let index = 0; index < 10000; index++) {
+            
+            let num = getRandom(1,10);
+            let repeticiones = numeros.get(num);
+            repeticiones++;
+            numeros.set(num, repeticiones);
+            
+        }
+
+        console.log('Resultados absolutos:');
+        for (let [num, repeticiones] of numeros) {
+            console.log('Numero: ' + num + ' Repeticiones: ' + repeticiones);
+            
+        }
+
+        console.log('Resultados (%):');
+        for (let [num, repeticiones] of numeros) {
+            console.log('Numero: ' + num + ' Repeticiones: ' + (repeticiones * 100/10000) + ' %');
+            
+        }
+
+    </script>
+</body>
+</html>

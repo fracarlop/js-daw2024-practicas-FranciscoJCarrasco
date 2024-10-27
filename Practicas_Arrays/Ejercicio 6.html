@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+    <script>
+
+        /*Crea un Map que almacene nombres como claves y edades como valores. 
+        Luego, agrega algunos nombres y edades, actualiza la edad de uno de ellos, 
+        y finalmente imprime todos los nombres con sus edades.*/
+
+        let edades = new Map();
+        edades.set('Antonio', 14).set('Juan', 22).set('Alvaro', 64);
+        console.log('Edades :');
+        console.log(edades);
+
+        //Añadimos
+        console.log('Añadimos dos edades más');
+        edades.set('Juan', 16);
+        edades.set('Pedro', 40);
+        console.log('Edades :');
+        console.log(edades);
+
+        // Actualizar
+        console.log('Actualizamos Antonio');
+        if (edades.has('Antonio')) {
+            edades.set('Antonio', 20);
+        }
+        console.log('Edades :');
+        console.log(edades);
+
+    </script>
+</body>
+</html>

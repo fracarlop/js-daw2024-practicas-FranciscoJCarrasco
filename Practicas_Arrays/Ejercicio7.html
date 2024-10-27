@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+    <script>
+        /*Mostrar por consola 50 combinaciones aleatorias de la lotería primitiva. 
+        Las combinaciones son 6 números del 1 al 49, pero debe tenerse en cuenta 
+        que no se pueden repetir los números en una misma combinación.*/
+
+        function getRandom(min, max) {
+             return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        let combinaciones = new Set();
+
+        while (combinaciones.size < 50) {
+
+            let combinacion = new Set();
+            while (combinacion.size < 6) {
+                combinacion.add(getRandom(1,49));
+            }
+
+            combinaciones.add([...combinacion]);
+        }
+            let array = [...combinaciones];
+        console.log('50 combinaciones aleatorias:');
+        array.forEach((combinacion, index) => console.log((index + 1) + '): ' + combinacion.toString()));
+
+    </script>
+</body>
+</html>
