@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 01 Unidad 06</title>
+</head>
+<body>
+    <script>
+       
+        /*
+        Crea una aplicación web que pida al usuario palabras continuamente hasta que el popup se deje vacío o se cancele.
+        Crear una función que recibirá todas las palabras y devolverá un mapa que contenga como clave cada palabra y cuyo 
+        valor será el número de veces que aparece esa palabra en el array. Mostrar los resultados por pantalla.
+        
+        Ayuda: Como en las 2 prácticas se pide introducir las palabras y devolver el resultado de la misma forma, podéis 
+        sacar esa parte del código a un script común que utilicen las 2 prácticas (main.js).
+        */
+
+        function noDialogo(palabra) {
+            if (palabra == null) {
+                return false;
+            } else if (palabra.trim() == '') {
+                return false
+            } else {
+                return true;
+            }
+        }
+
+        function contarRepeticionesPalabras(palabras) {
+            let mapa = new Map();
+            let repeticiones = 0;
+
+            palabras.forEach(palabra => {
+            repeticiones = mapa.get(palabra) == null? 0: mapa.get(palabra);
+            repeticiones++;
+
+            mapa.set(palabra, repeticiones);
+
+            });
+
+            return mapa;
+        }
+
+        let palabra;
+        let palabras = [];
+        
+
+        do {
+
+            palabra = window.prompt("Introduce una palabra");
+
+            palabras.push(palabra.toLowerCase());
+
+        } while (noDialogo(palabra))
+
+        contarRepeticionesPalabras(palabras).forEach((repeticiones,palabra) =>console.log('Palabra: ' + palabra + ' Repeticiones: ' + repeticiones))
+
+    </script>
+    
+</body>
+</html>
