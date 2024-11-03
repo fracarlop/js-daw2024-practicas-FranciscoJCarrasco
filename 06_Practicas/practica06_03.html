@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 03 Unidad 06</title>
+</head>
+<body>
+    <script src="main.js"></script>
+    <script>
+        /*
+        El método filter de los arrays permite indicar una función callback, para aplicar un filtro a los elementos del array. 
+        [Esta parte es sólo a efectos informativos, no hace falta que hagamos nada con el método filtro de los arrays].
+        Es una buena práctica para aprender a implementar funciones callback tratar de crear nuestras propias funciones.
+        Crea una función que se llame filtro y que reciba un array y una función callback. La función callback se entenderá que sólo tiene un parámetro. 
+        Esta función se aplicará a cada elemento del array y el resultado volverá a guardarse en el mismo array.
+        Por ejemplo: Array [1,2,3,4]
+        función = multiplicar por 2
+        Resultado: [2, 4, 6, 8]
+        Crear otros dos casos:
+        - Dado un array de palabras en minúsculas, pasarlas a mayúsculas.
+        - Dado un array de números, calcular el factorial de cada uno.
+        */
+       
+        function filtrar(array, funcionFiltrado) {
+            array.forEach((element, index) => {
+                let positivo = funcionFiltrado(array.shift());
+                if (positivo != null) array.push(positivo);
+                
+            });
+        }
+
+        let numeroPositivo = (num) => {
+            if (num > 0) return num;
+        };
+
+        let calcularFactorial = (num) => {
+
+            if (num <= 1) return 1;
+            else return num * calcularFactorial(num-1);
+            
+        }
+
+        let pasarAMayusculas = (palabra) => {return palabra.toUpperCase()};
+
+        let imprimir = (posicion, numero) => console.log('Numero ' + (posicion +1) + ': ' + numero);
+
+        let array = [1,2,-5,-7,8];
+
+        function ejecutarEjercicio(array, funcion, mensaje) {
+
+            console.log('Dado el array: [' + array.join() + ']');
+
+            console.log(mensaje);
+
+            filtrar(array, funcion);
+
+            console.log('Resultado: [' + array.join() + ']');
+        }
+
+        ejecutarEjercicio([1,2,-5,-7,8], numeroPositivo, 'Filtramos por números positivos');
+        ejecutarEjercicio(['casa', 'colegio', 'ordenador', 'fango'], pasarAMayusculas, 'Convertimos los elementos en mayúculas');
+        ejecutarEjercicio([8,9,4,1], calcularFactorial, 'Calculamos el factorial de sus elementos.');
+
+        
+
+        
+
+    </script>
+    
+</body>
+</html>
