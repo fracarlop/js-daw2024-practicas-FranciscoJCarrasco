@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica 01 Unidad 06</title>
+</head>
+<body>
+    <script>
+       
+        function noDialogo(palabra) {
+            if (palabra == null) {
+                return false;
+            } else if (palabra.trim() == '') {
+                return false
+            } else {
+                return true;
+            }
+        }
+
+        function compare(elemento1, elemento2) {
+
+            if (elemento2.toLowerCase() < elemento1.toLowerCase()) return -1;
+            if (elemento2.toLowerCase() > elemento1.toLowerCase()) return 1;
+            else return 0;
+
+        }
+
+        let ordenar = (array) => {
+
+            let arrayAuxiliar = [];
+
+            if (array instanceof Set) {
+                arrayAuxiliar = [...array]
+            }else if (array instanceof Array) {
+                arrayAuxiliar = array;
+            } 
+
+            arrayAuxiliar.sort((elemento1,elemento2) => compare(elemento1, elemento2));
+
+            if (arrayAuxiliar.isEmpy) {
+                console.log('No hay elementos para imprimir.')
+            }
+
+            return arrayAuxiliar;
+        }
+
+        let palabra = window.prompt("Introduce una palabra");
+        let palabras = new Set();
+
+        while (noDialogo(palabra)) {
+
+            palabras.add(palabra);
+
+            palabra = window.prompt("Introduce una palabra");
+        }
+
+        palabras = ordenar(palabras);
+        palabras.forEach((palabra, index) => console.log('Palabra ' + (index +1) + ': ' + palabra));
+
+    </script>
+    
+</body>
+</html>
