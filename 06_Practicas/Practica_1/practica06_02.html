@@ -6,6 +6,7 @@
     <title>Práctica 01 Unidad 06</title>
 </head>
 <body>
+    <script src="main.js"></script>
     <script>
        
         /*
@@ -16,16 +17,6 @@
         Ayuda: Como en las 2 prácticas se pide introducir las palabras y devolver el resultado de la misma forma, podéis 
         sacar esa parte del código a un script común que utilicen las 2 prácticas (main.js).
         */
-
-        function noDialogo(palabra) {
-            if (palabra == null) {
-                return false;
-            } else if (palabra.trim() == '') {
-                return false
-            } else {
-                return true;
-            }
-        }
 
         function contarRepeticionesPalabras(palabras) {
             let mapa = new Map();
@@ -42,19 +33,12 @@
             return mapa;
         }
 
-        let palabra;
-        let palabras = [];
         
+        let palabras = pedirPalabras();
 
-        do {
+        let imprimir = (palabra, repeticiones) => console.log('Palabra: ' + palabra + ' Repeticiones: ' + repeticiones);
 
-            palabra = window.prompt("Introduce una palabra");
-
-            palabras.push(palabra.toLowerCase());
-
-        } while (noDialogo(palabra))
-
-        contarRepeticionesPalabras(palabras).forEach((repeticiones,palabra) =>console.log('Palabra: ' + palabra + ' Repeticiones: ' + repeticiones))
+        imprimirIterable(contarRepeticionesPalabras(palabras), imprimir);
 
     </script>
     

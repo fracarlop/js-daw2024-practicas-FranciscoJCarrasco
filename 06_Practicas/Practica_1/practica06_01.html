@@ -6,6 +6,7 @@
     <title>Práctica 01 Unidad 06</title>
 </head>
 <body>
+    <script src="main.js"></script>
     <script>
         /*
         Crea una aplicación web que pida al usuario palabras continuamente hasta que el popup se deje vacío o se cancele.
@@ -15,14 +16,9 @@
         Ayuda: cancelar el popup devuelve null.
         */
        
-        function noDialogo(palabra) {
-            if (palabra == null) {
-                return false;
-            } else if (palabra.trim() == '') {
-                return false
-            } else {
-                return true;
-            }
+        function quitarDuplicados(array) {
+            let lista = new Set(array);
+            return [...lista];
         }
 
         function compare(elemento1, elemento2) {
@@ -52,18 +48,14 @@
             return arrayAuxiliar;
         }
 
-        let palabra = window.prompt("Introduce una palabra");
-        let palabras = new Set();
+        let imprimir = (posicion, palabra) => console.log('Palabra ' + (posicion +1) + ': ' + palabra);
 
-        while (noDialogo(palabra)) {
+        let palabras = pedirPalabras();
 
-            palabras.add(palabra.toLowerCase());
-
-            palabra = window.prompt("Introduce una palabra");
-        }
-
+        palabras = quitarDuplicados(palabras);
         palabras = ordenar(palabras);
-        palabras.forEach((palabra, index) => console.log('Palabra ' + (index +1) + ': ' + palabra));
+
+        imprimirIterable(palabras, imprimir);
 
     </script>
     
