@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>07 Práctica 1 FranciscoJCarrasco</title>
+</head>
+<body>
+    <script>
+
+        let array = [2,2,2];
+        
+        Array.prototype.calcularMedia = function () {
+            let suma = this.reduce((acumulado, valor) => acumulado+valor);
+            return suma/this.length;
+        }
+
+        console.log('Dado el array :'+array.join());
+        console.log('La media de todos sus valores es: '+array.calcularMedia());
+        
+
+
+
+    </script>
+</body>
+</html>
