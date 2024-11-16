@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>07 Práctica 1 FranciscoJCarrasco</title>
+</head>
+<body>
+    <script>
+
+        function Ordenador(marca='', modelo='', memRam = 4, hardDisk = 512, screen = 17) {
+
+            this.marca = marca;
+            this.modelo = modelo;
+            this.memRam = memRam;
+            this.hardDisk = hardDisk;
+            this.screen = screen;
+
+            this.toString = () => `marca = ${this.marca} modelo = ${this.modelo} memoria RAM = ${this.memRam} disco duro = ${this.hardDisk} screen = ${this.screen}`;
+
+        }
+
+        class Portatil extends Ordenador {
+
+            constructor(marca='', modelo='', memRam = 4, hardDisk = 256, screen = 12, autonomia = 4) {
+                super(marca, modelo, memRam, hardDisk, screen);
+                this.autonomia = autonomia;
+            }
+            
+            toString() {
+                return super.toString(); + this.autonomia; 
+            }
+        
+        }
+
+        let ordenador = new Ordenador('Leonovo', 'cp 300');
+
+
+        let portatil = new Portatil('hp', '15');
+
+        console.log('Ordenador 1: ' + ordenador.toString());
+
+        console.log('Ordenador portatil: ' + portatil.toString());
+
+    </script>
+</body>
+</html>

@@ -29,5 +29,8 @@
             <ul>
                 <li type="circle"><h4><a href="./07_Practicas/practica07_02.html">Práctica 1</a></h4></li>
             </ul>
+            <ul>
+                <li type="circle"><h4><a href="./07_Practicas/practica07_03.html">Práctica 1</a></h4></li>
+            </ul>
         </li>
     </ul>
