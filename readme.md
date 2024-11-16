@@ -25,8 +25,8 @@
         <li type="disc"><h3>Unidad 7</h3>
             <ul>
                 <li type="circle"><h4><a href="./07_Practicas/practica07_01.html">Práctica 7.1</a></h4></li>
-                <li type="circle"><h4><a href="./07_Practicas/practica07_02.html">Práctica 7.1</a></h4></li>
-                <li type="circle"><h4><a href="./07_Practicas/practica07_03.html">Práctica 7.1</a></h4></li>
+                <li type="circle"><h4><a href="./07_Practicas/practica07_02.html">Práctica 7.2</a></h4></li>
+                <li type="circle"><h4><a href="./07_Practicas/practica07_03.html">Práctica 7.3</a></h4></li>
             </ul>
         </li>
     </ul>
