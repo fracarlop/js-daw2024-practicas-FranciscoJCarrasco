@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <LINK REL=StyleSheet HREF="./css/estilo.css" TYPE="text/css" MEDIA=screen>
+    <title>Práctica 09 01 Francisco J Carrasco López</title>
+</head>
+<body>
+    <div id="imagen">
+        <h1>Pulsa CTRL  + B PARA CAMBIAR LA IMAGEN DE FONDO</h1>
+    </div>
+    <script>
+        
+        document.addEventListener('keydown', (event)=>{
+            if (event.ctrlKey && event.key ==='b') {
+                document.getElementById('imagen').style.backgroundImage = 'url("./img/nieve.jpg")';
+            }
+        });
+    </script>
+</body>
+</html>
