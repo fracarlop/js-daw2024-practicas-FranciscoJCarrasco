@@ -32,6 +32,7 @@
         <li type="disc"><h3>Unidad 8 y 9</h3>
             <ul>
                 <li type="circle"><h4><a href="./08_09_Practicas/practica09_01.html">Práctica 9.1</a></h4></li>
+                <li type="circle"><h4><a href="./08_09_Practicas/practica09_02.html">Práctica 9.1</a></h4></li>
             </ul>
         </li>
     </ul>
