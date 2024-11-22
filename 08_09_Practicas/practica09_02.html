@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel=StyleSheet href="./css/estilo.css" type="text/css">
+    <title>Práctica 09 02 Francisco J Carrasco López</title>
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm">
+            <div class="form-group">
+              <label for="inputEmail">Email</label>
+              <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="email">
+              <small id="emailHelp" class="form-text text-muted"></small>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" class="form-control" id="inputPassword" aria-describedby="passwordHelp" placeholder="Password">
+              <small id="passwordHelp" class="form-text text-muted"></small>
+            </div>
+            <button type="submit" id="button" class="btn btn-primary grey">Submit</button>
+        </form>
+    </div>
+    
+    
+    <script>
+        let boton = document.getElementById("button");
+        boton.disabled = true;
+        boton.style.backgroundColor = 'grey';
+
+        loginForm.addEventListener('blur', (event)=>{
+
+            var loginForm = document.getElementById("loginForm");
+            var inputEmail = document.getElementById('inputEmail');
+            var inputPassword = document.getElementById('inputPassword');
+            var helpEmail = document.getElementById('emailHelp');
+            var helpPw = document.getElementById('passwordHelp');
+
+            var valueEmail = inputEmail.value;
+            var valuePw = inputPassword.value;
+            
+            if (valueEmail != '' && !(/[a-z0-9]+@[a-z0-9]+\.[a-z0-9]+/.test(valueEmail))) {
+                inputEmail.style.backgroundColor = 'red';
+                helpEmail.innerText = 'El email debe ser xxxx@yyyy.zzzz';
+            } else if (valuePw != '' && !(valuePw.length > 7 && valuePw.length < 11)) {
+                inputPassword.style.backgroundColor = 'red';
+                helpPw.innerText = 'El password debe tener entre 8 y 10 caracteres';
+            } else if (valuePw != '' && valueEmail != '') {
+                let boton = document.getElementById("button");
+                boton.disabled = false;
+                boton.style.backgroundColor = 'blue';
+            }
+
+        }, true);
+
+        loginForm.addEventListener('focus', (event)=>{
+
+            var loginForm = document.getElementById("loginForm");
+            var inputEmail = document.getElementById('inputEmail');
+            var inputPassword = document.getElementById('inputPassword');
+            var helpEmail = document.getElementById('emailHelp');
+            var helpPw = document.getElementById('passwordHelp');
+
+            var valueEmail = inputEmail.value;
+            var valuePw = inputPassword.value;
+
+            inputEmail.style.backgroundColor = 'white';
+            helpEmail.innerText = '';
+            inputPassword.style.backgroundColor = 'white';
+            helpPw.innerText = '';
+        }, true);
+    </script>
+</body>
+</html>
