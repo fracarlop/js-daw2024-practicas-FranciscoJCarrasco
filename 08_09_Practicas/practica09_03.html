@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Práctica 09 03 Francisco J Carrasco López</title>
+</head>
+<body>
+    <div id="capa1" draggable="true" style="background-color: yellow">Soy arrastrable</div>
+    <div id="capa2">Soy el destino</div>
+    <script>
+
+        document.getElementById('capa1').addEventListener('dragstart',(event)=>{
+
+            event.dataTransfer.setData('idElement', event.target.id)
+            
+        });
+
+        document.getElementById('capa1').addEventListener('drag',(event)=>{
+
+            document.getElementById('capa1').style.opacity = '50%';
+            document.getElementById('capa2').style.backgroundColor = 'red';
+
+        });
+
+        document.getElementById('capa2').addEventListener('dragover', (event)=>{
+
+            event.preventDefault();
+
+        });
+
+        document.getElementById('capa2').addEventListener('drop', (event)=>{
+
+            event.preventDefault();
+            let elementId = event.dataTransfer.getData('idElement');
+            document.getElementById(elementId).hidden = true;
+            
+            let capa2 = document.getElementById('capa2');
+            capa2.style.backgroundColor = 'white';
+            capa2.innerHTML = 'Lo has conseguido.';
+
+        });
+        
+    </script>
+</body>
+<style>
+    div{
+        border:1px solid black; padding:1em; position:fixed; top:20px; width:200px; height:100px;
+    }
+    #capa1{
+        left:50px;
+    }
+    #capa2{
+        left:400px;
+    }
+</style>
+</html>
