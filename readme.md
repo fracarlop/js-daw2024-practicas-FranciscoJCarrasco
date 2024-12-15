@@ -39,7 +39,8 @@
         <li type="disc"><h3>Unidad 10</h3>
             <ul>
                 <li type="circle"><h4><a href="./10_Practicas/practica10_01.html">Práctica 10.1</a></h4></li>
-                <li type="circle"><h4><a href="./10_Practicas/practica10_02.html">Práctica 10.1</a></h4></li>
+                <li type="circle"><h4><a href="./10_Practicas/practica10_02.html">Práctica 10.2</a></h4></li>
+                <li type="circle"><h4><a href="./10_Practicas/practica10_03.html">Práctica 10.3</a></h4></li>
             </ul>
         </li>
     </ul>
