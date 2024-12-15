@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 10 02 Francisco J Carrasco</title>
+</head>
+<body>
+    <div id="contenedor"></div>
+    <script>
+
+        temporizador(5000);
+
+        // Se van a crear dos promesas: promesa1 y promesa2. La promesa1 tiene la lógica del final correcto, la promesa2 tiene la lógica que controla el error de la promesa1,
+        // y a su vez el promesa1.then está en su interior, así si primesa1 acaba correctamente la promesa 2 se resuelve correctament tb transmitiendo el resultado de promesa1 y si
+        // se cumple el error de promesa1, promesa2 manda mensaje de error y "cancelando" la promesa1 porque promesa.then ya no puede ser llamado.
+        // con esta implementación hacemos que la promesa2 controle el final de la promesa1 trabajando de forma asíncrona.
+        function temporizador(milisegundos) {
+
+            let tiempoFinalCorrecto = milisegundos;
+            let tiempoFinalError = milisegundos * 2;
+
+            // promesa que llevará el tiempo para finalizar la función correctamente
+            let promesaFinalCorrecto = new Promise((resolver, rechazar) => {
+
+                let timeout = setTimeout(() => {
+
+                    clearTimeout(timeout);
+                    resolver('Tiempo concluido');
+                        
+                }, (tiempoFinalCorrecto));
+
+            });
+
+            // promesa que controla si hay error en promesaFinalCorrecto
+            let promesaError = new Promise((resolver, rechazar) => {
+
+                // si se cumple la condición de error en promesaFinalCorrecto, promesaError finalizará con error y la función then de promesaFinalCorrecto ya no llegará a llamarse
+                let timeoutError = setTimeout(() => {
+
+                    clearTimeout(timeoutError);
+                    rechazar(Error('El tiempo no va bien'));
+
+                }, tiempoFinalError);
+
+                // Si promesaFinalCorrecto.then es llamada promesaError se resuelve también trasmitiendo el resultado de promesaFinalCorrecto
+                promesaFinalCorrecto.then(function (mensaje) {
+                    // Si la promesa de final correcto se resuelve, se resuelve la promesaError sin fallo.
+                    clearTimeout(timeoutError);
+                    resolver(mensaje);
+                });
+            });
+
+            promesaError.then((mensaje)=>{
+
+                console.log(mensaje);
+                document.getElementById('contenedor').innerHTML = '<h1>' + mensaje + '</h1>';
+
+            }).catch((error) => {
+
+                console.log(error);
+                document.getElementById('contenedor').innerHTML = '<h1>' + error + '</h1>';
+
+            });
+        }
+        
+    </script>
+</body>
+</html>
