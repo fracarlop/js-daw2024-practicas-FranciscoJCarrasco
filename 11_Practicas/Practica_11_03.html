@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 11 03</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Imagen del día de la AEMET</h1>
+    <div id="form" style="text-align: center;">
+        <h4>Pega tu API Key</h4>
+        <textarea id="apiKey" cols="30" rows="10"></textarea><br>
+        <button id="button">CARGAR MAPA</button>
+    </div>
+    <div id="mapContainer" style="text-align: center;" hidden><img id="mapImage" style="transform: rotate(90deg); margin: auto;" src="" alt="Mapa" width="425" height="608"></div>
+    <div id="errorContainer" hidden><p id="error" style="text-align: center; color: red;"></p></div>
+    <script>
+        const URL_BASE = 'https://opendata.aemet.es/opendata';
+        const API_PATH = '/api/mapasygraficos/analisis?api_key=';
+
+        window.addEventListener('load', (ev) => {
+            let form = document.getElementById('form');
+            let apiKey = document.getElementById('apiKey');
+            let boton = document.querySelector('button');
+
+            boton.addEventListener('click', (ev) => {
+                ev.preventDefault();
+                clearError();
+                getMap(apiKey.value);
+            });
+        });
+
+        function getMap(apiKey) {
+
+            fetch(URL_BASE + API_PATH + apiKey) 
+                .then((response) => {
+
+                if (response.ok) {
+
+                return response.json();
+
+                } else {
+        
+                throw new Error(response.status);
+
+                }
+            })
+            .then((data) => {
+
+                console.log('Datos recibidos:', data);
+
+                fetch(data.datos)
+                .then(response => response.blob())
+                .then(blob => {
+                    let imageUrl = URL.createObjectURL(blob);
+                    document.getElementById('form').setAttribute('hidden', true);
+                    document.getElementById('mapContainer').removeAttribute('hidden');
+                    document.getElementById('mapImage').setAttribute('src', imageUrl);
+                })
+                .catch(error => {
+                    console.error('Error al descargar la imagen:', error);
+                    showError();
+                });        
+
+            })
+            .catch((error) => {
+                showError();
+            });
+        }
+
+        function showError() {
+            console.error('Error en la petición de usuario:', error);
+            document.getElementById('errorContainer').removeAttribute('hidden');
+            document.getElementById('error').innerHTML = `Error en la petición de usuario: ${error}`;
+        }
+
+        function clearError() {
+            document.getElementById('errorContainer').setAttribute('hidden', true);
+            document.getElementById('error').innerHTML = '';
+        }
+    </script>
+</body>
+</html>
