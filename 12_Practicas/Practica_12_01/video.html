@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 12 01 - Vídeo</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <video id="video" src="./multimedia/video.mp4"></video>
+        <main></main>
+    </div>
+    
+    <script>
+        let video = document.getElementById('video');
+        let main = document.querySelector('main');
+
+        video.addEventListener('click', (event) => {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+
+        window.onload = function() {
+    document.addEventListener("contextmenu", function(e){
+      e.preventDefault();
+    }, false);
+   };
+
+        video.addEventListener('contextmenu', (event) => {
+            let duration = video.duration;
+            let minits = Math.floor(duration/60);
+            let seg = Math.floor(duration%60);
+
+            main.textContent = `Duración: ${minits}:${seg}`;
+        });
+    </script>
+</body>
+</html>

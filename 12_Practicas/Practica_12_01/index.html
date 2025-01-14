@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 12 01</title>
+</head>
+<body>
+    <div id="container">
+        <div id="timeout">
+            <h1 id="number" style="text-align: center;">5</h1>
+        </div>
+        <div id="link" hidden style="text-align: center;"><a href="video.html">Pulsa para ver el vídeo</a></div>
+    </div>
+</body>
+<script>
+
+    timeout(5000);
+
+    function timeout(ms) {
+
+        let numberText = document.getElementById('number');
+
+        numberText.innerText = (ms / 1000).toString();
+
+        let number = (ms / 1000) - 1;
+
+        let interval = setInterval(() => {
+            document.getElementById('number').innerText = number.toString();
+            number --;
+        }, 1000);
+
+        let timeoutPromise = new Promise((resolve, reject) => {
+            let timeout = setTimeout(() => {
+                clearInterval(interval);
+                resolve(true);
+            }, ms + 1000)
+        });
+
+        timeoutPromise.then((result) => {
+            
+            if (result) {
+                let permiso = Notification.permission; 
+
+                if (permiso === 'default') { 
+                    Notification.requestPermission().then(
+                        (resp) => { 
+                        if (resp == 'granted') showNotification(); 
+                    }); 
+                } else {
+                showNotification();
+            }
+
+                document.getElementById('timeout').setAttribute('hidden', true);
+                document.getElementById('link').removeAttribute('hidden');
+
+            } 
+        }).catch((err) => {
+            
+        });
+    }
+
+    function showNotification() {
+        let n = new Notification('Pulsa para ver el vídeo');
+
+       // n.addEventListener('click', () => { location.href ="./video.html"; });
+    }
+
+</script>
+</html>
