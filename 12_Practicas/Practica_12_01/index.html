@@ -61,9 +61,9 @@
     }
 
     function showNotification() {
-        let n = new Notification('Pulsa para ver el vídeo');
+        let n = new Notification('Práctica 12',{body: 'Pulsa para ver el vídeo'});
 
-       // n.addEventListener('click', () => { location.href ="./video.html"; });
+        n.addEventListener('click', () => { location.href ="./video.html"; });
     }
 
 </script>
